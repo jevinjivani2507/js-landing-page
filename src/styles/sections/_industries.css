@@ -1,6 +1,8 @@
 .industries {
   padding-block: var(--section-py);
   overflow: hidden;
+  background-color: var(--surface-secondary);
+  border-bottom: 1px solid var(--color-gray-300);
 }
 
 .industries__header {
@@ -12,7 +14,7 @@
 }
 
 .industries__header-text {
-  max-width: 700px;
+  max-width: 600px;
 }
 
 .industries__heading {
@@ -23,7 +25,7 @@
 }
 
 .industries__subtitle {
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   color: var(--color-gray-500);
   line-height: var(--leading-relaxed);
 }
@@ -54,12 +56,7 @@
   color: var(--color-white);
 }
 
-.industries__arrow:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-
-/* Carousel track */
+/* Carousel */
 .industries__carousel {
   position: relative;
   width: 100%;
@@ -73,65 +70,65 @@
 
 .industries__track {
   display: flex;
-  gap: var(--space-6);
+  gap: 24px;
   will-change: transform;
 }
 
+/* Card: full background image + gradient overlay + text at bottom */
 .industries__card {
   flex: 0 0 320px;
+  height: 360px;
   border-radius: var(--radius-xl);
   overflow: hidden;
-  background-color: var(--color-white);
-  border: 1px solid var(--color-gray-200);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
-}
-
-.industries__card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-
-.industries__image {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  background-color: var(--color-gray-200);
+  position: relative;
+  background-size: cover;
+  background-position: center;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  transition: transform var(--transition-base),
+    box-shadow var(--transition-base);
 }
 
-.industries__image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform var(--duration-slow) var(--ease-out);
+.industries__card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.35) 50%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  z-index: 1;
+  transition: background var(--transition-base);
 }
 
-.industries__card:hover .industries__image img {
-  transform: scale(1.05);
-}
-
-.industries__image span {
-  font-size: var(--text-sm);
-  color: var(--color-white);
-  font-weight: var(--weight-medium);
+.industries__card:hover::before {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.35) 50%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  filter: blur(1.5px);
 }
 
 .industries__body {
-  padding: var(--space-5);
+  position: relative;
+  z-index: 2;
+  padding: var(--space-6);
 }
 
 .industries__title {
-  font-size: var(--text-base);
-  font-weight: var(--weight-semibold);
-  color: var(--color-gray-900);
-  margin-bottom: var(--space-2);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-white);
+  margin-bottom: var(--space-3);
 }
 
 .industries__text {
   font-size: var(--text-sm);
-  color: var(--color-gray-500);
+  color: rgba(255, 255, 255, 0.8);
   line-height: var(--leading-relaxed);
 }
 
@@ -142,6 +139,7 @@
 
   .industries__card {
     flex: 0 0 280px;
+    height: 380px;
   }
 }
 
@@ -157,5 +155,6 @@
 
   .industries__card {
     flex: 0 0 260px;
+    height: 350px;
   }
 }

@@ -14,15 +14,14 @@ export function initIndustriesCarousel() {
 
   let position = 0;
   let isPaused = false;
+  let isTransitioning = false;
   let isDragging = false;
   let startX = 0;
   let scrollLeft = 0;
-  let rafId = null;
 
   const cards = [...track.children];
   cards.forEach((card) => {
-    const clone = card.cloneNode(true);
-    track.appendChild(clone);
+    track.appendChild(card.cloneNode(true));
   });
 
   const totalWidth = cards.length * (CARD_WIDTH + GAP);
@@ -31,35 +30,45 @@ export function initIndustriesCarousel() {
     if (prefersReducedMotion()) return;
 
     function step() {
-      if (!isPaused && !isDragging) {
+      if (!isPaused && !isDragging && !isTransitioning) {
         position -= AUTO_SPEED;
         if (Math.abs(position) >= totalWidth) {
           position += totalWidth;
         }
         track.style.transform = `translateX(${position}px)`;
       }
-      rafId = requestAnimationFrame(step);
+      requestAnimationFrame(step);
     }
-    rafId = requestAnimationFrame(step);
+    requestAnimationFrame(step);
+  }
+
+  function smoothJump(newPosition) {
+    isTransitioning = true;
+    position = newPosition;
+    track.style.transition = 'transform 0.4s cubic-bezier(0.33, 1, 0.68, 1)';
+    track.style.transform = `translateX(${position}px)`;
+    track.addEventListener('transitionend', function handler() {
+      track.removeEventListener('transitionend', handler);
+      track.style.transition = '';
+      isTransitioning = false;
+    });
   }
 
   if (leftBtn) {
     leftBtn.addEventListener('click', () => {
-      position += SCROLL_AMOUNT;
-      if (position > 0) position = -totalWidth + SCROLL_AMOUNT;
-      track.style.transition = 'transform 0.4s cubic-bezier(0.33, 1, 0.68, 1)';
-      track.style.transform = `translateX(${position}px)`;
-      setTimeout(() => { track.style.transition = ''; }, 400);
+      if (isTransitioning) return;
+      let next = position + SCROLL_AMOUNT;
+      if (next > 0) next = -totalWidth + SCROLL_AMOUNT;
+      smoothJump(next);
     });
   }
 
   if (rightBtn) {
     rightBtn.addEventListener('click', () => {
-      position -= SCROLL_AMOUNT;
-      if (Math.abs(position) >= totalWidth) position += totalWidth;
-      track.style.transition = 'transform 0.4s cubic-bezier(0.33, 1, 0.68, 1)';
-      track.style.transform = `translateX(${position}px)`;
-      setTimeout(() => { track.style.transition = ''; }, 400);
+      if (isTransitioning) return;
+      let next = position - SCROLL_AMOUNT;
+      if (Math.abs(next) >= totalWidth) next += totalWidth;
+      smoothJump(next);
     });
   }
 
