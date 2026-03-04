@@ -1,0 +1,102 @@
+.features {
+  padding-block: var(--section-py);
+  background-color: var(--surface-secondary);
+}
+
+.features__header {
+  margin-bottom: var(--space-16);
+  max-width: 800px;
+}
+
+.features__heading {
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-4);
+}
+
+.features__subtitle {
+  font-size: var(--text-lg);
+  color: var(--color-gray-500);
+  line-height: var(--leading-relaxed);
+}
+
+.features__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+  margin-bottom: var(--space-12);
+}
+
+.features__card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.features__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-gray-300);
+}
+
+.features__icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(30, 58, 138, 0.08);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-5);
+  color: var(--color-primary);
+}
+
+.features__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.features__title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--color-gray-900);
+  margin-bottom: var(--space-3);
+}
+
+.features__text {
+  font-size: var(--text-sm);
+  color: var(--color-gray-500);
+  line-height: var(--leading-relaxed);
+}
+
+.features__cta {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 991px) {
+  .features__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .features__heading {
+    font-size: var(--text-3xl);
+  }
+}
+
+@media (max-width: 767px) {
+  .features__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .features__card {
+    padding: var(--space-6);
+  }
+
+  .features__heading {
+    font-size: var(--text-2xl);
+  }
+}

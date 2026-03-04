@@ -1,0 +1,56 @@
+/* Reusable section header pattern */
+.section-header {
+  margin-bottom: var(--space-16);
+  max-width: 800px;
+}
+
+.section-header--center {
+  text-align: center;
+  margin-inline: auto;
+}
+
+.section-header__title {
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  margin-bottom: var(--space-4);
+}
+
+.section-header__subtitle {
+  font-size: var(--text-lg);
+  color: var(--color-gray-500);
+  line-height: var(--leading-relaxed);
+}
+
+.section-header__divider {
+  width: 64px;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+  margin-top: var(--space-4);
+}
+
+.section-header--center .section-header__divider {
+  margin-inline: auto;
+}
+
+@media (max-width: 991px) {
+  .section-header__title {
+    font-size: var(--text-3xl);
+  }
+}
+
+@media (max-width: 767px) {
+  .section-header {
+    margin-bottom: var(--space-10);
+  }
+
+  .section-header__title {
+    font-size: var(--text-2xl);
+  }
+
+  .section-header__subtitle {
+    font-size: var(--text-base);
+  }
+}

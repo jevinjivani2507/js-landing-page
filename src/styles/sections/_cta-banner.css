@@ -1,0 +1,156 @@
+.cta-banner {
+  padding-block: var(--section-py);
+}
+
+.cta-banner__card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: center;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-16);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-banner__content {
+  color: var(--color-white);
+}
+
+.cta-banner__title {
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--color-white);
+  margin-bottom: var(--space-5);
+}
+
+.cta-banner__text {
+  font-size: var(--text-base);
+  color: rgba(255, 255, 255, 0.8);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-8);
+}
+
+.cta-banner__divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-bottom: var(--space-6);
+}
+
+.cta-banner__contact {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.7);
+  line-height: var(--leading-relaxed);
+}
+
+.cta-banner__contact strong {
+  color: var(--color-white);
+}
+
+.cta-banner__contact a {
+  color: var(--color-white);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.cta-banner__contact a:hover {
+  opacity: 0.9;
+}
+
+/* Contact form card */
+.cta-banner__form-wrapper {
+  background-color: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-xl);
+}
+
+.cta-banner__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.cta-banner__form-title {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  color: var(--color-gray-900);
+  margin-bottom: var(--space-2);
+}
+
+.cta-banner__input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  color: var(--color-gray-900);
+  background-color: var(--color-white);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.cta-banner__input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+}
+
+.cta-banner__input::placeholder {
+  color: var(--color-gray-400);
+}
+
+.cta-banner__phone-row {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.cta-banner__select {
+  padding: 12px 12px;
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  color: var(--color-gray-700);
+  background-color: var(--color-white);
+  flex-shrink: 0;
+  width: 80px;
+  cursor: pointer;
+}
+
+.cta-banner__select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.cta-banner__submit {
+  width: 100%;
+  margin-top: var(--space-2);
+}
+
+@media (max-width: 991px) {
+  .cta-banner__card {
+    grid-template-columns: 1fr;
+    padding: var(--space-10);
+    gap: var(--space-8);
+  }
+
+  .cta-banner__title {
+    font-size: var(--text-3xl);
+  }
+}
+
+@media (max-width: 767px) {
+  .cta-banner__card {
+    padding: var(--space-8);
+  }
+
+  .cta-banner__title {
+    font-size: var(--text-2xl);
+  }
+
+  .cta-banner__form-wrapper {
+    padding: var(--space-6);
+  }
+}
