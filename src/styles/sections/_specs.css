@@ -2,6 +2,7 @@
   background-color: #111827;
   padding-block: var(--section-py);
   z-index: 1000;
+  border-bottom: 1px solid var(--color-gray-700);
 }
 
 .specs__container {
