@@ -8,8 +8,8 @@
   font-weight: var(--weight-semibold);
   line-height: 1;
   padding: 16px 24px;
-  border-radius: var(--radius-lg);
-  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
   cursor: pointer;
   white-space: nowrap;
   transition: all var(--transition-base);
@@ -72,13 +72,15 @@
 /* Outline dark */
 .btn--outline-dark {
   background-color: transparent;
-  color: var(--color-gray-700);
-  border-color: var(--color-gray-300);
+  color: var(--color-white);
+  border-color: var(--color-white);
+  padding: 12px 16px;
 }
 
 .btn--outline-dark:hover {
-  background-color: var(--color-gray-50);
-  border-color: var(--color-gray-400);
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-color: var(--color-white);
 }
 
 /* Ghost */
