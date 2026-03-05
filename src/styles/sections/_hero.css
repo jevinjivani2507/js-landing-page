@@ -301,18 +301,31 @@
     display: contents;
   }
 
-  .hero__badges  { order: 1; }
-  .hero__title   { order: 2; font-size: var(--text-4xl); }
-  .hero__features { order: 3; }
+  .hero__badges {
+    order: 1;
+  }
+  .hero__title {
+    order: 2;
+    font-size: var(--text-4xl);
+  }
+  .hero__features {
+    order: 3;
+  }
   .hero__gallery {
     order: 4;
     max-width: 500px;
     margin-inline: auto;
     width: 100%;
   }
-  .hero__pricing { order: 5; }
-  .hero__actions { order: 6; }
-  .hero__trust   { order: 7; }
+  .hero__pricing {
+    order: 5;
+  }
+  .hero__actions {
+    order: 6;
+  }
+  .hero__trust {
+    order: 7;
+  }
 
   .hero__zoom-lens,
   .hero__zoom-preview {
@@ -324,6 +337,10 @@
   .hero__thumbnails {
     grid-template-columns: repeat(6, 1fr);
     gap: var(--space-2);
+  }
+
+  .hero__trust-logos {
+    justify-content: center;
   }
 
   .hero__title {
