@@ -104,7 +104,7 @@
     padding: var(--space-6);
   }
 
-  .features__heading {
-    font-size: var(--text-2xl);
+  .features__container {
+    gap: var(--space-8);
   }
 }

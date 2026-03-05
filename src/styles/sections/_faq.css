@@ -102,7 +102,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-8);
-  background-color: var(--color-gray-100);
+  background-color: var(--color-gray-50);
   border: 1px solid var(--color-gray-200);
   border-radius: var(--radius-md);
   padding: var(--space-5);
@@ -159,10 +159,6 @@
 }
 
 @media (max-width: 767px) {
-  .faq__heading {
-    font-size: var(--text-2xl);
-  }
-
   .faq__catalogue {
     flex-direction: column;
     align-items: flex-start;
@@ -175,13 +171,16 @@
     width: 100%;
   }
 
+  .faq__container {
+    gap: var(--space-8);
+  }
+
   .faq__catalogue-input {
     min-width: 0;
     width: 100%;
   }
 
   .faq__question {
-    padding: var(--space-4) var(--space-5);
     font-size: var(--text-sm);
   }
 }

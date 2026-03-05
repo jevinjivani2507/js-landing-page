@@ -149,10 +149,6 @@
     align-items: flex-start;
   }
 
-  .industries__heading {
-    font-size: var(--text-2xl);
-  }
-
   .industries__card {
     flex: 0 0 260px;
     height: 350px;

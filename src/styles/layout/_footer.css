@@ -164,6 +164,10 @@
     gap: var(--space-6);
   }
 
+  .footer__container {
+    gap: var(--space-8);
+  }
+
   .footer__bottom {
     flex-direction: column;
     gap: var(--space-4);

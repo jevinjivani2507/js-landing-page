@@ -114,11 +114,15 @@
   flex-direction: column;
   gap: var(--space-6);
   opacity: 0;
-  transition: opacity var(--transition-base);
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity var(--transition-base), visibility var(--transition-base);
 }
 
 .navbar__overlay.is-visible {
   opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
 }
 
 .navbar__overlay .navbar__list {

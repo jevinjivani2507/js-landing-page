@@ -50,7 +50,7 @@
 }
 
 @media (max-width: 767px) {
-  .specs__heading {
-    font-size: var(--text-2xl);
+  .specs__container {
+    gap: var(--space-8);
   }
 }
