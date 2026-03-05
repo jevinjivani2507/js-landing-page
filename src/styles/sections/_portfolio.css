@@ -1,5 +1,7 @@
 .portfolio {
   padding-block: var(--section-py);
+  background-color: var(--surface-secondary);
+  border-bottom: 1px solid var(--color-gray-300);
 }
 
 .portfolio__header {
@@ -38,12 +40,12 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-5);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  transition: transform var(--transition-base),
+    box-shadow var(--transition-base);
 }
 
 .portfolio__card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
 }
 
 .portfolio__card-body {
@@ -69,7 +71,11 @@
   aspect-ratio: 16 / 10;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: linear-gradient(135deg, var(--color-gray-100), var(--color-gray-200));
+  background: linear-gradient(
+    135deg,
+    var(--color-gray-100),
+    var(--color-gray-200)
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,7 +89,7 @@
 }
 
 .portfolio__card:hover .portfolio__card-image img {
-  transform: scale(1.05);
+  transform: scale(1.01);
 }
 
 .portfolio__image-placeholder {

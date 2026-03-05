@@ -2,6 +2,8 @@
 .testimonials {
   padding-block: var(--section-py);
   overflow: hidden;
+  background-color: var(--surface-secondary);
+  border-bottom: 1px solid var(--color-gray-300);
 }
 
 .testimonials__header {
@@ -45,19 +47,19 @@
 
 .testimonials__card {
   flex: 0 0 340px;
-  background-color: var(--color-white);
-  border: 1px solid var(--color-gray-200);
+  background-color: #f7f8f9;
+  border: 1.5px solid var(--color-gray-200);
   border-radius: var(--radius-xl);
   padding: var(--space-8);
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  transition: transform var(--transition-base),
+    box-shadow var(--transition-base);
 }
 
 .testimonials__card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
 }
 
 .testimonials__quote svg {
