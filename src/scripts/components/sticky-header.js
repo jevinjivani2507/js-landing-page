@@ -1,43 +1,58 @@
 import { $, throttle } from '../core/utils.js';
 
 export function initStickyHeader() {
-  const navbar = $('#navbar');
+  const hero = $('#hero');
   const sticky = $('#stickyHeader');
-  if (!navbar || !sticky) return;
+  if (!hero || !sticky) return;
 
   let lastScroll = 0;
-  const THRESHOLD = 5;
+  let isVisible = false;
 
   const observer = new IntersectionObserver(
     ([entry]) => {
-      if (!entry.isIntersecting) {
-        sticky.classList.add('is-visible');
-        sticky.setAttribute('aria-hidden', 'false');
+      if (!entry.isIntersecting && window.scrollY > 0) {
+        show();
       } else {
-        sticky.classList.remove('is-visible');
-        sticky.setAttribute('aria-hidden', 'true');
+        hide();
       }
     },
-    { rootMargin: '-77px 0px 0px 0px', threshold: 0 }
+    { threshold: 0 }
   );
 
-  observer.observe(navbar);
+  observer.observe(hero);
+
+  function show() {
+    if (isVisible) return;
+    isVisible = true;
+    sticky.classList.add('is-visible');
+    sticky.setAttribute('aria-hidden', 'false');
+  }
+
+  function hide() {
+    if (!isVisible) return;
+    isVisible = false;
+    sticky.classList.remove('is-visible');
+    sticky.setAttribute('aria-hidden', 'true');
+  }
 
   const handleScroll = throttle(() => {
     const current = window.scrollY;
-    if (Math.abs(current - lastScroll) < THRESHOLD) return;
+    const heroBottom = hero.offsetTop + hero.offsetHeight;
 
-    if (current > lastScroll && current > 400) {
-      sticky.classList.remove('is-visible');
+    if (current <= heroBottom) {
+      hide();
+      lastScroll = current;
+      return;
+    }
+
+    if (current > lastScroll && current > heroBottom + 100) {
+      hide();
     } else if (current < lastScroll) {
-      const navbarRect = navbar.getBoundingClientRect();
-      if (navbarRect.bottom < 0) {
-        sticky.classList.add('is-visible');
-      }
+      show();
     }
 
     lastScroll = current;
-  }, 50);
+  }, 60);
 
   window.addEventListener('scroll', handleScroll, { passive: true });
 }
