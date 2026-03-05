@@ -1,6 +1,7 @@
 .process {
   padding-block: var(--section-py);
   background-color: var(--surface-secondary);
+  border-bottom: 1px solid var(--color-gray-300);
 }
 
 /* Section header: centered title + subtitle */
@@ -32,18 +33,23 @@
   border-radius: var(--radius-xl);
   padding: var(--space-8);
   box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
 }
 
 /* Horizontal pill tabs */
 .process__tabs {
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
   gap: var(--space-2);
-  margin-bottom: var(--space-10);
 }
 
 .process__tab {
-  padding: 10px 20px;
+  position: relative;
+  flex: 1;
+  padding: 8px 16px;
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
   color: var(--color-gray-600);
@@ -52,7 +58,21 @@
   cursor: pointer;
   background-color: transparent;
   white-space: nowrap;
+  text-align: center;
   transition: all var(--transition-fast);
+  background-color: var(--color-white);
+}
+
+.process__tab:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -30px;
+  width: 30px;
+  height: 1px;
+  background: #ccc;
+  transform: translateY(-50%);
+  z-index: -1;
 }
 
 .process__tab:hover {
@@ -126,7 +146,7 @@
 }
 
 .process__panel-list li::before {
-  content: '';
+  content: "";
   width: 8px;
   height: 8px;
   background-color: var(--color-primary);
@@ -143,8 +163,12 @@
 
 .process__panel-image {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  background: linear-gradient(135deg, var(--color-gray-100), var(--color-gray-200));
+  aspect-ratio: 4 / 2;
+  background: linear-gradient(
+    135deg,
+    var(--color-gray-100),
+    var(--color-gray-200)
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -203,9 +227,15 @@
   .process__tabs {
     overflow-x: auto;
     flex-wrap: nowrap;
+    justify-content: flex-start;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: var(--space-2);
+    padding-bottom: var(--space-4);
+    margin-bottom: var(--space-6);
     scrollbar-width: none;
+  }
+
+  .process__tab {
+    flex: 0 0 auto;
   }
 
   .process__tabs::-webkit-scrollbar {
