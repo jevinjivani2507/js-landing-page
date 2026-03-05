@@ -3,55 +3,89 @@ import { $, prefersReducedMotion } from '../core/utils.js';
 export function initTestimonialsCarousel() {
   const carousel = $('#testimonialsCarousel');
   const track = carousel?.querySelector('.testimonials__track');
-  if (!carousel || !track) return;
+  if (!carousel || !track || track.children.length === 0) return;
 
-  const CARD_WIDTH = 340;
-  const GAP = 24;
   const AUTO_SPEED = 0.4;
+  const BUFFER = 400;
 
   let position = 0;
   let isPaused = false;
   let isDragging = false;
   let startX = 0;
-  let scrollLeft = 0;
+  let dragStartPos = 0;
 
-  const cards = [...track.children];
-  cards.forEach((card) => {
-    track.appendChild(card.cloneNode(true));
-  });
-
-  const totalWidth = cards.length * (CARD_WIDTH + GAP);
-
-  function autoScroll() {
-    if (prefersReducedMotion()) return;
-
-    function step() {
-      if (!isPaused && !isDragging) {
-        position -= AUTO_SPEED;
-        if (Math.abs(position) >= totalWidth) {
-          position += totalWidth;
-        }
-        track.style.transform = `translateX(${position}px)`;
-      }
-      requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
+  function gap() {
+    return parseFloat(getComputedStyle(track).gap) || 24;
   }
 
+  function stepOf(card) {
+    return card.offsetWidth + gap();
+  }
+
+  function firstIsOffScreen() {
+    const el = track.firstElementChild;
+    if (!el) return false;
+    return el.getBoundingClientRect().right <= carousel.getBoundingClientRect().left;
+  }
+
+  function lastIsNearViewport() {
+    const el = track.lastElementChild;
+    if (!el) return false;
+    return el.getBoundingClientRect().left < carousel.getBoundingClientRect().right + BUFFER;
+  }
+
+  function recycleFirst() {
+    const el = track.firstElementChild;
+    if (!el) return;
+    position += stepOf(el);
+    track.appendChild(el);
+  }
+
+  function recycleLast() {
+    const el = track.lastElementChild;
+    if (!el) return;
+    position -= stepOf(el);
+    track.insertBefore(el, track.firstElementChild);
+  }
+
+  // --- Auto-scroll via rAF ---
+  function tick() {
+    if (!isPaused && !isDragging) {
+      position -= AUTO_SPEED;
+      track.style.transform = `translateX(${position}px)`;
+    }
+
+    if (!isDragging) {
+      if (firstIsOffScreen() && lastIsNearViewport()) {
+        recycleFirst();
+        track.style.transform = `translateX(${position}px)`;
+      }
+
+      if (position > 0) {
+        recycleLast();
+        track.style.transform = `translateX(${position}px)`;
+      }
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  if (!prefersReducedMotion()) requestAnimationFrame(tick);
+
+  // --- Interaction: hover, mouse-drag, touch-drag ---
   carousel.addEventListener('mouseenter', () => { isPaused = true; });
   carousel.addEventListener('mouseleave', () => { isPaused = false; });
 
   carousel.addEventListener('mousedown', (e) => {
     isDragging = true;
     startX = e.pageX;
-    scrollLeft = position;
+    dragStartPos = position;
     carousel.style.cursor = 'grabbing';
   });
 
   window.addEventListener('mousemove', (e) => {
     if (!isDragging) return;
-    const dx = e.pageX - startX;
-    position = scrollLeft + dx;
+    position = dragStartPos + (e.pageX - startX);
     track.style.transform = `translateX(${position}px)`;
   });
 
@@ -65,13 +99,12 @@ export function initTestimonialsCarousel() {
     isPaused = true;
     isDragging = true;
     startX = e.touches[0].pageX;
-    scrollLeft = position;
+    dragStartPos = position;
   }, { passive: true });
 
   carousel.addEventListener('touchmove', (e) => {
     if (!isDragging) return;
-    const dx = e.touches[0].pageX - startX;
-    position = scrollLeft + dx;
+    position = dragStartPos + (e.touches[0].pageX - startX);
     track.style.transform = `translateX(${position}px)`;
   }, { passive: true });
 
@@ -79,6 +112,4 @@ export function initTestimonialsCarousel() {
     isDragging = false;
     isPaused = false;
   });
-
-  autoScroll();
 }
