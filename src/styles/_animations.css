@@ -3,7 +3,7 @@
   opacity: 0;
   transform: translateY(30px);
   transition: opacity var(--duration-slower) var(--ease-out),
-              transform var(--duration-slower) var(--ease-out);
+    transform var(--duration-slower) var(--ease-out);
 }
 
 .reveal--left {
@@ -24,12 +24,24 @@
 }
 
 /* Stagger delays for grid children */
-.reveal-stagger > .reveal:nth-child(1) { transition-delay: 0ms; }
-.reveal-stagger > .reveal:nth-child(2) { transition-delay: 80ms; }
-.reveal-stagger > .reveal:nth-child(3) { transition-delay: 160ms; }
-.reveal-stagger > .reveal:nth-child(4) { transition-delay: 240ms; }
-.reveal-stagger > .reveal:nth-child(5) { transition-delay: 320ms; }
-.reveal-stagger > .reveal:nth-child(6) { transition-delay: 400ms; }
+.reveal-stagger > .reveal:nth-child(1) {
+  transition-delay: 0ms;
+}
+.reveal-stagger > .reveal:nth-child(2) {
+  transition-delay: 80ms;
+}
+.reveal-stagger > .reveal:nth-child(3) {
+  transition-delay: 160ms;
+}
+.reveal-stagger > .reveal:nth-child(4) {
+  transition-delay: 240ms;
+}
+.reveal-stagger > .reveal:nth-child(5) {
+  transition-delay: 320ms;
+}
+.reveal-stagger > .reveal:nth-child(6) {
+  transition-delay: 400ms;
+}
 
 /* Keyframe animations */
 @keyframes fadeInUp {
@@ -44,18 +56,30 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideDown {
-  from { transform: translateY(-100%); }
-  to { transform: translateY(0); }
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideUp {
-  from { transform: translateY(0); }
-  to { transform: translateY(-100%); }
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
 }
 
 @keyframes scaleIn {
@@ -70,34 +94,52 @@
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes countUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Magnetic button effect (applied via JS) */
-.magnetic {
-  transition: transform var(--duration-base) var(--ease-out);
-  will-change: transform;
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Tilt card effect (applied via JS) */
