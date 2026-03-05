@@ -62,17 +62,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  height: 36px;
   flex-shrink: 0;
-  transition: transform var(--transition-base);
-  color: var(--color-gray-400);
+  border-radius: var(--radius-full);
+  background-color: rgba(30, 58, 138, 0.08);
+  color: var(--color-primary);
+  transition: transform var(--transition-base),
+    background-color var(--transition-base);
 }
 
-/* .faq__item--active .faq__icon {
+.faq__icon svg {
+  transition: transform var(--transition-base);
+}
+
+.faq__item--active .faq__icon svg {
   transform: rotate(180deg);
-  color: var(--color-primary);
-} */
+}
+
+.faq__item--active .faq__icon {
+  background-color: #f1f2f3;
+}
 
 .faq__answer {
   max-height: 0;
