@@ -10,6 +10,7 @@
 @import './shared/_cards.css';
 @import './shared/_section.css';
 @import './shared/_table.css';
+@import './shared/_modal.css';
 
 /* Layout */
 @import './layout/_navbar.css';

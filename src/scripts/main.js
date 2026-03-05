@@ -5,6 +5,7 @@ import { initFaqAccordion } from "./components/faq-accordion.js";
 import { initIndustriesCarousel } from "./components/industries-carousel.js";
 import { initProcessTabs } from "./components/process-tabs.js";
 import { initTestimonialsCarousel } from "./components/stats-counter.js";
+import { initModals } from "./components/modals.js";
 
 import { initScrollReveal } from "./interactions/scroll-reveal.js";
 import { initParallax } from "./interactions/parallax.js";
@@ -44,6 +45,7 @@ function init() {
 
   initIndustriesCarousel();
   initTestimonialsCarousel();
+  initModals();
 
   initMagneticButtons();
   initParallax();
