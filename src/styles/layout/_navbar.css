@@ -125,6 +125,29 @@
   visibility: visible;
 }
 
+.navbar__overlay-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-gray-200);
+  background: var(--color-white);
+  color: var(--color-gray-600);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  z-index: 1;
+}
+
+.navbar__overlay-close:hover {
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-900);
+}
+
 .navbar__overlay .navbar__list {
   flex-direction: column;
   align-items: flex-start;

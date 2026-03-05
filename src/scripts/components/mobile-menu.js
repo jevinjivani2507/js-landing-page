@@ -1,32 +1,45 @@
 import { $, $$ } from '../core/utils.js';
 
 export function initMobileMenu() {
-  const btn = $('#hamburgerBtn');
+  const mainBtn = $('#hamburgerBtn');
+  const stickyBtn = $('#hamburgerBtn-sticky');
+  const closeBtn = $('#mobileMenuClose');
   const overlay = $('#mobileMenu');
-  if (!btn || !overlay) return;
+  if (!overlay) return;
 
   const links = $$('.navbar__link', overlay);
+  const btns = [mainBtn, stickyBtn].filter(Boolean);
   let isOpen = false;
 
   function open() {
     isOpen = true;
-    btn.classList.add('is-active');
-    btn.setAttribute('aria-expanded', 'true');
+    btns.forEach((b) => {
+      b.classList.add('is-active');
+      b.setAttribute('aria-expanded', 'true');
+    });
     overlay.classList.add('is-visible');
     document.body.style.overflow = 'hidden';
   }
 
   function close() {
     isOpen = false;
-    btn.classList.remove('is-active');
-    btn.setAttribute('aria-expanded', 'false');
+    btns.forEach((b) => {
+      b.classList.remove('is-active');
+      b.setAttribute('aria-expanded', 'false');
+    });
     overlay.classList.remove('is-visible');
     document.body.style.overflow = '';
   }
 
-  btn.addEventListener('click', () => {
-    isOpen ? close() : open();
+  btns.forEach((b) => {
+    b.addEventListener('click', () => {
+      isOpen ? close() : open();
+    });
   });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', close);
+  }
 
   links.forEach((link) => {
     link.addEventListener('click', close);
