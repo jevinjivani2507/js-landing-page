@@ -173,4 +173,14 @@
     gap: var(--space-4);
     text-align: center;
   }
+
+  .copyright {
+    flex-direction: column;
+    gap: var(--space-3);
+    text-align: center;
+  }
+
+  .footer__bottom-links {
+    justify-content: center;
+  }
 }

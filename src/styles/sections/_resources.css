@@ -87,7 +87,6 @@
   .resources__row {
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-3);
-    padding: var(--space-4) var(--space-5);
+    gap: var(--space-2);
   }
 }

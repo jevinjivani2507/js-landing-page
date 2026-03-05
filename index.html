@@ -166,7 +166,10 @@
           <!-- Left: Image gallery -->
           <div class="hero__gallery reveal">
             <div class="hero__main-image" id="heroMainImage">
-              <img src="assets/images/hero-image.png" alt="HDPE Pipes" />
+              <img
+                src="assets/images/hero/raw-material.png"
+                alt="HDPE Raw Material"
+              />
               <div class="hero__zoom-lens" id="heroZoomLens"></div>
             </div>
             <div class="hero__zoom-preview" id="heroZoomPreview"></div>
@@ -174,50 +177,56 @@
               <button
                 class="hero__thumb is-active"
                 data-index="0"
-                data-src="assets/images/hero-image.png"
-                aria-label="HDPE Pipes"
+                data-src="assets/images/hero/raw-material.png"
+                aria-label="Raw Material"
               >
-                <img src="assets/images/hero-image.png" alt="HDPE Pipes" />
+                <img
+                  src="assets/images/hero/raw-material.png"
+                  alt="Raw Material"
+                />
               </button>
               <button
                 class="hero__thumb"
                 data-index="1"
-                data-src="assets/images/hero-2.jpg"
-                aria-label="HDPE Coils"
+                data-src="assets/images/hero/extrusion.jpg"
+                aria-label="Extrusion"
               >
-                <img src="assets/images/hero-2.jpg" alt="HDPE Coils" />
+                <img src="assets/images/hero/extrusion.jpg" alt="Extrusion" />
               </button>
               <button
                 class="hero__thumb"
                 data-index="2"
-                data-src="assets/images/hero-3.jpeg"
-                aria-label="HDPE Fittings"
+                data-src="assets/images/hero/cooling.jpg"
+                aria-label="Cooling"
               >
-                <img src="assets/images/hero-3.jpeg" alt="HDPE Fittings" />
+                <img src="assets/images/hero/cooling.jpg" alt="Cooling" />
               </button>
               <button
                 class="hero__thumb"
                 data-index="3"
-                data-src="assets/images/hero-4.png"
-                aria-label="PE-RT Pipes"
+                data-src="assets/images/hero/sizing.jpg"
+                aria-label="Sizing"
               >
-                <img src="assets/images/hero-4.png" alt="PE-RT Pipes" />
+                <img src="assets/images/hero/sizing.jpg" alt="Sizing" />
               </button>
               <button
                 class="hero__thumb"
                 data-index="4"
-                data-src="assets/images/hero-5.png"
-                aria-label="Gas Pipes"
+                data-src="assets/images/hero/quality-control.jpg"
+                aria-label="Quality Control"
               >
-                <img src="assets/images/hero-5.png" alt="Gas Pipes" />
+                <img
+                  src="assets/images/hero/quality-control.jpg"
+                  alt="Quality Control"
+                />
               </button>
               <button
                 class="hero__thumb"
                 data-index="5"
-                data-src="assets/images/hero-7.webp"
-                aria-label="Water Pipes"
+                data-src="assets/images/hero/cutting.jpg"
+                aria-label="Cutting"
               >
-                <img src="assets/images/hero-7.webp" alt="Water Pipes" />
+                <img src="assets/images/hero/cutting.jpg" alt="Cutting" />
               </button>
             </div>
           </div>
@@ -897,7 +906,9 @@
           <div class="industries__track" id="industriesTrack">
             <div
               class="industries__card"
-              style="background-image: url('assets/images/hero-image.png')"
+              style="
+                background-image: url('assets/images/hero/raw-material.png');
+              "
             >
               <div class="industries__body">
                 <h3 class="industries__title">Fishnet Manufacturing</h3>
@@ -910,7 +921,9 @@
             </div>
             <div
               class="industries__card"
-              style="background-image: url('assets/images/hero-image.png')"
+              style="
+                background-image: url('assets/images/hero/raw-material.png');
+              "
             >
               <div class="industries__body">
                 <h3 class="industries__title">Fishnet Manufacturing</h3>
@@ -923,7 +936,9 @@
             </div>
             <div
               class="industries__card"
-              style="background-image: url('assets/images/hero-image.png')"
+              style="
+                background-image: url('assets/images/hero/raw-material.png');
+              "
             >
               <div class="industries__body">
                 <h3 class="industries__title">Fishnet Manufacturing</h3>
@@ -936,7 +951,9 @@
             </div>
             <div
               class="industries__card"
-              style="background-image: url('assets/images/hero-image.png')"
+              style="
+                background-image: url('assets/images/hero/raw-material.png');
+              "
             >
               <div class="industries__body">
                 <h3 class="industries__title">Fishnet Manufacturing</h3>
@@ -1045,6 +1062,9 @@
                 role="tabpanel"
               >
                 <div class="process__panel-content">
+                  <span class="process__step-badge"
+                    >Step 1/8: Raw Material</span
+                  >
                   <h3>High-Grade Raw Material Selection</h3>
                   <p>
                     Vacuum sizing tanks ensure precise outer diameter while
@@ -1058,9 +1078,10 @@
                 </div>
                 <div class="process__panel-media">
                   <div class="process__panel-image">
-                    <span class="process__image-placeholder"
-                      >Raw Materials</span
-                    >
+                    <img
+                      src="assets/images/hero/raw-material.png"
+                      alt="Raw Material Selection"
+                    />
                   </div>
                   <button
                     class="process__media-arrow process__media-arrow--left"
@@ -1101,6 +1122,7 @@
 
               <div class="process__panel" id="step2" role="tabpanel" hidden>
                 <div class="process__panel-content">
+                  <span class="process__step-badge">Step 2/8: Extrusion</span>
                   <h3>Precision Extrusion Process</h3>
                   <p>
                     State-of-the-art single and twin-screw extruders melt and
@@ -1114,9 +1136,10 @@
                 </div>
                 <div class="process__panel-media">
                   <div class="process__panel-image">
-                    <span class="process__image-placeholder"
-                      >Extrusion Line</span
-                    >
+                    <img
+                      src="assets/images/hero/extrusion.jpg"
+                      alt="Extrusion Process"
+                    />
                   </div>
                   <button
                     class="process__media-arrow process__media-arrow--left"
@@ -1157,6 +1180,7 @@
 
               <div class="process__panel" id="step3" role="tabpanel" hidden>
                 <div class="process__panel-content">
+                  <span class="process__step-badge">Step 3/8: Cooling</span>
                   <h3>Controlled Cooling Chamber</h3>
                   <p>
                     Pipes pass through spray cooling chambers for precise
@@ -1170,9 +1194,10 @@
                 </div>
                 <div class="process__panel-media">
                   <div class="process__panel-image">
-                    <span class="process__image-placeholder"
-                      >Cooling Tanks</span
-                    >
+                    <img
+                      src="assets/images/hero/cooling.jpg"
+                      alt="Cooling Chamber"
+                    />
                   </div>
                   <button
                     class="process__media-arrow process__media-arrow--left"
@@ -1213,6 +1238,7 @@
 
               <div class="process__panel" id="step4" role="tabpanel" hidden>
                 <div class="process__panel-content">
+                  <span class="process__step-badge">Step 4/8: Sizing</span>
                   <h3>Vacuum Sizing Station</h3>
                   <p>
                     Vacuum sizing tanks ensure precise outer diameter while
@@ -1226,9 +1252,10 @@
                 </div>
                 <div class="process__panel-media">
                   <div class="process__panel-image">
-                    <span class="process__image-placeholder"
-                      >Sizing Station</span
-                    >
+                    <img
+                      src="assets/images/hero/sizing.jpg"
+                      alt="Sizing Station"
+                    />
                   </div>
                   <button
                     class="process__media-arrow process__media-arrow--left"
@@ -1269,6 +1296,9 @@
 
               <div class="process__panel" id="step5" role="tabpanel" hidden>
                 <div class="process__panel-content">
+                  <span class="process__step-badge"
+                    >Step 5/8: Quality Control</span
+                  >
                   <h3>Comprehensive Quality Control</h3>
                   <p>
                     Every production batch undergoes hydrostatic pressure
@@ -1282,7 +1312,10 @@
                 </div>
                 <div class="process__panel-media">
                   <div class="process__panel-image">
-                    <span class="process__image-placeholder">Quality Lab</span>
+                    <img
+                      src="assets/images/hero/quality-control.jpg"
+                      alt="Quality Control Lab"
+                    />
                   </div>
                   <button
                     class="process__media-arrow process__media-arrow--left"
@@ -1323,6 +1356,7 @@
 
               <div class="process__panel" id="step6" role="tabpanel" hidden>
                 <div class="process__panel-content">
+                  <span class="process__step-badge">Step 6/8: Marking</span>
                   <h3>Automated Marking System</h3>
                   <p>
                     Inkjet and laser marking systems print continuous
@@ -1336,9 +1370,10 @@
                 </div>
                 <div class="process__panel-media">
                   <div class="process__panel-image">
-                    <span class="process__image-placeholder"
-                      >Marking System</span
-                    >
+                    <img
+                      src="assets/images/hero/marking.jpg"
+                      alt="Marking System"
+                    />
                   </div>
                   <button
                     class="process__media-arrow process__media-arrow--left"
@@ -1379,6 +1414,7 @@
 
               <div class="process__panel" id="step7" role="tabpanel" hidden>
                 <div class="process__panel-content">
+                  <span class="process__step-badge">Step 7/8: Cutting</span>
                   <h3>Precision Cutting &amp; Coiling</h3>
                   <p>
                     Automatic planetary saws cut pipes to specified lengths
@@ -1392,9 +1428,10 @@
                 </div>
                 <div class="process__panel-media">
                   <div class="process__panel-image">
-                    <span class="process__image-placeholder"
-                      >Cutting Station</span
-                    >
+                    <img
+                      src="assets/images/hero/cutting.jpg"
+                      alt="Cutting Station"
+                    />
                   </div>
                   <button
                     class="process__media-arrow process__media-arrow--left"
@@ -1435,6 +1472,7 @@
 
               <div class="process__panel" id="step8" role="tabpanel" hidden>
                 <div class="process__panel-content">
+                  <span class="process__step-badge">Step 8/8: Packaging</span>
                   <h3>Secure Packaging &amp; Dispatch</h3>
                   <p>
                     Pipes are bundled with protective end caps and strapping.
@@ -1448,7 +1486,10 @@
                 </div>
                 <div class="process__panel-media">
                   <div class="process__panel-image">
-                    <span class="process__image-placeholder">Packaging</span>
+                    <img
+                      src="assets/images/hero/packaging.webp"
+                      alt="Packaging and Dispatch"
+                    />
                   </div>
                   <button
                     class="process__media-arrow process__media-arrow--left"
@@ -1486,6 +1527,48 @@
                   </button>
                 </div>
               </div>
+            </div>
+
+            <!-- Mobile step navigation (hidden on desktop) -->
+            <div class="process__step-nav" id="processStepNav">
+              <button
+                class="process__step-btn process__step-btn--prev"
+                id="processPrev"
+                aria-label="Previous step"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+                Previous
+              </button>
+              <button
+                class="process__step-btn process__step-btn--next"
+                id="processNext"
+                aria-label="Next step"
+              >
+                Next
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
             </div>
           </div>
         </div>

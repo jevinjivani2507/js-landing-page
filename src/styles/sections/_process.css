@@ -218,6 +218,12 @@
   right: 12px;
 }
 
+/* Step badge + mobile step nav (hidden on desktop) */
+.process__step-badge,
+.process__step-nav {
+  display: none;
+}
+
 /* Responsive */
 @media (max-width: 991px) {
   .process__title {
@@ -230,12 +236,15 @@
     justify-content: flex-start;
     -webkit-overflow-scrolling: touch;
     padding-bottom: var(--space-4);
-    margin-bottom: var(--space-6);
     scrollbar-width: none;
   }
 
   .process__tab {
     flex: 0 0 auto;
+  }
+
+  .process__tab:not(:last-child)::after {
+    display: none;
   }
 
   .process__tabs::-webkit-scrollbar {
@@ -257,12 +266,98 @@
     font-size: var(--text-2xl);
   }
 
-  .process__card {
-    padding: var(--space-5);
+  .process__header {
+    margin-bottom: var(--space-8);
   }
 
-  .process__tab {
+  /* Hide tab bar, show step badge + navigation */
+  .process__tabs {
+    display: none;
+  }
+
+  .process__step-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--color-white);
+    background-color: var(--color-primary);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-4);
+    width: fit-content;
+  }
+
+  .process__step-nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .process__step-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
     padding: 8px 16px;
-    font-size: var(--text-xs);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    font-family: var(--font-family);
+    color: var(--color-gray-700);
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    z-index: 1;
+  }
+
+  .process__step-btn:hover {
+    background-color: var(--color-gray-50);
+    border-color: var(--color-gray-400);
+  }
+
+  .process__step-btn:disabled {
+    pointer-events: none;
+    background-color: var(--color-gray-100);
+    border-color: var(--color-gray-200);
+    color: var(--color-gray-400);
+  }
+
+  .process__step-nav::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    background: var(--color-gray-200);
+  }
+
+  .process__step-indicator {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--color-gray-500);
+  }
+
+  .process__card {
+    padding: var(--space-5);
+    gap: var(--space-5);
+  }
+
+  .process__panel-content h3 {
+    font-size: var(--text-xl);
+  }
+
+  .process__panel-image {
+    aspect-ratio: 16 / 10;
+  }
+
+  .process__media-arrow {
+    width: 34px;
+    height: 34px;
+  }
+
+  .process__media-arrow svg {
+    width: 16px;
+    height: 16px;
   }
 }

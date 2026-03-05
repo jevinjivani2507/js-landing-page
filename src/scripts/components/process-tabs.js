@@ -3,36 +3,50 @@ import { $, $$ } from '../core/utils.js';
 export function initProcessTabs() {
   const tabs = $$('.process__tab');
   const panels = $$('.process__panel');
+  const prevBtn = $('#processPrev');
+  const nextBtn = $('#processNext');
+  const indicator = $('#processIndicator');
   if (!tabs.length || !panels.length) return;
 
-  tabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      const targetId = tab.dataset.tab;
+  let currentIndex = 0;
 
-      tabs.forEach((t) => {
-        t.classList.remove('process__tab--active');
-        t.setAttribute('aria-selected', 'false');
-      });
+  function activate(index) {
+    currentIndex = index;
 
-      panels.forEach((p) => {
-        p.classList.remove('process__panel--active');
-        p.hidden = true;
-      });
-
-      tab.classList.add('process__tab--active');
-      tab.setAttribute('aria-selected', 'true');
-
-      const target = $(`#${targetId}`);
-      if (target) {
-        target.hidden = false;
-        target.classList.add('process__panel--active');
-      }
+    tabs.forEach((t) => {
+      t.classList.remove('process__tab--active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    panels.forEach((p) => {
+      p.classList.remove('process__panel--active');
+      p.hidden = true;
     });
 
-    tab.addEventListener('keydown', (e) => {
-      const currentIndex = tabs.indexOf(tab);
-      let newIndex;
+    tabs[index].classList.add('process__tab--active');
+    tabs[index].setAttribute('aria-selected', 'true');
+    panels[index].hidden = false;
+    panels[index].classList.add('process__panel--active');
 
+    // Scroll active tab into view on tablet
+    tabs[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+
+    updateStepNav();
+  }
+
+  function updateStepNav() {
+    if (indicator) {
+      indicator.textContent = `Step ${currentIndex + 1}/${tabs.length}`;
+    }
+    if (prevBtn) prevBtn.disabled = currentIndex === 0;
+    if (nextBtn) nextBtn.disabled = currentIndex === tabs.length - 1;
+  }
+
+  // Tab clicks
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => activate(i));
+
+    tab.addEventListener('keydown', (e) => {
+      let newIndex;
       if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
         e.preventDefault();
         newIndex = (currentIndex + 1) % tabs.length;
@@ -46,11 +60,24 @@ export function initProcessTabs() {
         e.preventDefault();
         newIndex = tabs.length - 1;
       }
-
       if (newIndex !== undefined) {
         tabs[newIndex].focus();
-        tabs[newIndex].click();
+        activate(newIndex);
       }
     });
   });
+
+  // Mobile Previous/Next
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) activate(currentIndex - 1);
+    });
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      if (currentIndex < tabs.length - 1) activate(currentIndex + 1);
+    });
+  }
+
+  updateStepNav();
 }
